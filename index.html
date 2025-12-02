@@ -1,543 +1,1064 @@
 <!DOCTYPE html>
-<html lang="en-ca">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>The Fan Club - Food Edition</title>
+  <link rel="stylesheet" href="./vars.css">
+  <link rel="stylesheet" href="./style.css">
+  
   
   <style>
-    /* ===========================
-       RESET & BASE STYLES
-       =========================== */
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      border: none;
-      text-decoration: none;
-      background: none;
-      -webkit-font-smoothing: antialiased;
-    }
-
-    ul, ol, menu {
-      list-style-type: none;
-    }
-
-    /* ===========================
-       CSS VARIABLES
-       =========================== */
-    :root {
-      --soft-grey: #f2f2f2;
-      --pure-white: #ffffff;
-      --charcoal: #333333;
-      --sage-green: #87a280;
-      --brown: #b9a590;
-      --warm-beige: #e6dac6;
-    }
-
-    /* ===========================
-       LAYOUT
-       =========================== */
-    body {
-      background: var(--soft-grey);
-      font-family: "WorkSans-Regular", sans-serif;
-      overflow-x: hidden;
-    }
-
-    .page-container {
-      width: 1440px;
-      margin: 0 auto;
-      position: relative;
-      min-height: 3454px;
-      background: var(--soft-grey);
-    }
-
-    /* ===========================
-       HEADER / NAVIGATION
-       =========================== */
-    .header {
-      background: var(--pure-white);
-      width: 100%;
-      height: 120px;
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      z-index: 1000;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 0 60px;
-    }
-
-    .logo {
-      text-align: center;
-    }
-
-    .logo-title {
-      color: var(--charcoal);
-      font-family: "NicoMoji-Regular", sans-serif;
-     /* Header */
-      header {
-        background: white;
-        padding: 20px 60px;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        position: sticky;
-        top: 0;
-        z-index: 100;
-        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
-      }
-
-      .logo h1 {
-        font-family: 'Space Mono', monospace;
-        font-size: 45px;
-        font-weight: 700;
-      }
-
-      .logo p {
-        font-family: 'Space Mono', monospace;
-        font-size: 22px;
-        text-align: center;
-      }
-
-      nav ul {
-        display: flex;
-        gap: 30px;
-        list-style: none;
-      }
-
-      nav a {
-        font-family: 'Space Mono', monospace;
-        font-size: 22px;
-        color: #7e7e7e;
-        text-decoration: none;
-        transition: color 0.3s;
-      }
-
-      nav a.active,
-      nav a:hover {
-        color: #333;
-      }
-
-    /* ===========================
-       HERO SECTION
-       =========================== */
-    .hero-section {
-      position: relative;
-      margin-top: 117px;
-      height: 810px;
-      overflow: hidden;
-    }
-
-    .hero-image {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-
-    .hero-content {
-      position: absolute;
-      left: 120px;
-      top: 66px;
-      max-width: 627px;
-      color: var(--soft-grey);
-    }
-
-    .hero-title {
-      font-family: "NicoMoji-Regular", sans-serif;
-      font-size: 96px;
-      line-height: 80px;
-      margin-bottom: 30px;
-    }
-
-    .hero-subtitle {
-      font-family: "SpaceMono-Regular", sans-serif;
-      font-size: 48px;
-      line-height: 40px;
-      margin-bottom: 50px;
-    }
-
-    .hero-description {
-      font-family: "WorkSans-Regular", sans-serif;
-      font-size: 24px;
-      line-height: 40px;
-      margin-bottom: 25px;
-    }
-
-    /* ===========================
-       BUTTONS
-       =========================== */
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      padding: 10px 30px;
-      border-radius: 20px;
-      font-family: "WorkSans-Bold", sans-serif;
-      font-size: 22px;
-      cursor: pointer;
-      transition: transform 0.2s, box-shadow 0.2s;
-    }
-
-    .btn:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-    }
-
-    .btn-primary {
-      background: var(--brown);
-      color: var(--charcoal);
-      min-width: 217px;
-      height: 55px;
-    }
-
-    .btn-secondary {
-      background: var(--warm-beige);
-      color: var(--charcoal);
-      min-width: 217px;
-      height: 55px;
-    }
-
-    /* ===========================
-       FEATURED REVIEWS SECTION
-       =========================== */
-    .featured-section {
-      padding: 100px 0;
-      text-align: center;
-      position: relative;
-    }
-
-    .section-title {
-      font-family: "NicoMoji-Regular", sans-serif;
-      font-size: 64px;
-      line-height: 52px;
-      color: var(--charcoal);
-      margin-bottom: 60px;
-    }
-
-    .featured-images {
-      display: grid;
-      grid-template-columns: 526px 1fr;
-      grid-template-rows: 1fr 1fr;
-      gap: 20px;
-      max-width: 1320px;
-      margin: 0 auto;
-      padding: 0 60px;
-    }
-
-    .featured-image-1 {
-      grid-row: 1 / 3;
-      width: 526px;
-      height: 725px;
-      object-fit: cover;
-    }
-
-    .featured-image-2 {
-      width: 520px;
-      height: 377px;
-      object-fit: cover;
-      justify-self: end;
-    }
-
-    .featured-image-3 {
-      width: 622px;
-      height: 385px;
-      object-fit: cover;
-      justify-self: end;
-    }
-
-    /* ===========================
-       TOP PICKS SECTION
-       =========================== */
-    .top-picks-section {
-      background: var(--sage-green);
-      padding: 60px 120px;
-      min-height: 640px;
-    }
-
-    .top-picks-title {
-      font-family: "NicoMoji-Regular", sans-serif;
-      font-size: 64px;
-      line-height: 52px;
-      color: var(--charcoal);
-      margin-bottom: 40px;
-    }
-
-    .category-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 360px);
-      gap: 60px;
-    }
-
-    .category-card {
-      position: relative;
-      width: 360px;
-      height: 360px;
-      cursor: pointer;
-      overflow: hidden;
-      transition: transform 0.3s;
-    }
-
-    .category-card:hover {
-      transform: scale(1.05);
-    }
-
-    .category-image {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-
-    /* ===========================
-       CONTACT SECTION
-       =========================== */
-    .contact-section {
-      background: var(--brown);
-      padding: 60px 120px;
-      text-align: center;
-      min-height: 427px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .photo-gallery {
-      display: flex;
-      gap: 67px;
-      margin-bottom: 40px;
-    }
-
-    .gallery-photo {
-      width: 250px;
-      height: 250px;
-      object-fit: cover;
-      border-radius: 3px;
-    }
-
-    /* ===========================
-       FOOTER
-       =========================== */
-    .footer {
-      background: var(--charcoal);
-      padding: 60px;
-      color: var(--pure-white);
-    }
-
-    .footer-content {
-      display: grid;
-      grid-template-columns: 384px 1fr 1fr 1fr;
-      gap: 60px;
-      max-width: 1320px;
-      margin: 0 auto;
-    }
-
-    .footer-logo {
-      text-align: center;
-    }
-
-    .footer-logo-title {
-      font-family: "NicoMoji-Regular", sans-serif;
-      font-size: 45px;
-      line-height: 52px;
-      color: var(--pure-white);
-    }
-
-    .footer-logo-subtitle {
-      font-family: "SpaceMono-Regular", sans-serif;
-      font-size: 22px;
-      line-height: 52px;
-      color: var(--pure-white);
-    }
-
-    .footer-column h3 {
-      font-family: "SpaceMono-Bold", sans-serif;
-      font-size: 22px;
-      line-height: 52px;
-      margin-bottom: 10px;
-    }
-
-    .footer-links {
-      display: flex;
-      flex-direction: column;
-      gap: 5px;
-    }
-
-    .footer-link {
-      color: var(--pure-white);
-      font-family: "SpaceMono-Regular", sans-serif;
-      font-size: 22px;
-      line-height: 52px;
-      text-decoration: underline;
-      transition: opacity 0.3s;
-    }
-
-    .footer-link:hover {
-      opacity: 0.7;
-    }
-
-    .newsletter-form {
-      display: flex;
-      flex-direction: column;
-      gap: 16px;
-    }
-
-    .newsletter-title {
-      font-family: "SpaceMono-Bold", sans-serif;
-      font-size: 22px;
-      line-height: 36px;
-    }
-
-    .email-input {
-      width: 100%;
-      height: 66px;
-      padding: 0 15px;
-      background: var(--pure-white);
-      font-size: 22px;
-      line-height: 36px;
-      color: #333;
-    }
-
-    .email-input::placeholder {
-      color: #d8d8d8;
-    }
-
-    .btn-signup {
-      background: var(--warm-beige);
-      color: var(--charcoal);
-      font-family: "SpaceMono-Regular", sans-serif;
-      font-size: 22px;
-      line-height: 36px;
-      padding: 10px 20px;
-      border-radius: 20px;
-      cursor: pointer;
-      transition: transform 0.2s;
-    }
-
-    .btn-signup:hover {
-      transform: translateY(-2px);
-    }
-  </style>
+   a,
+   button,
+   input,
+   select,
+   h1,
+   h2,
+   h3,
+   h4,
+   h5,
+   * {
+       box-sizing: border-box;
+       margin: 0;
+       padding: 0;
+       border: none;
+       text-decoration: none;
+       background: none;
+   
+       -webkit-font-smoothing: antialiased;
+   }
+   
+   menu, ol, ul {
+       list-style-type: none;
+       margin: 0;
+       padding: 0;
+   }
+    
+    .home-page,
+.home-page * {
+  box-sizing: border-box;
+}
+.home-page {
+  background: var(--soft-grey, #f2f2f2);
+  height: 3454px;
+  position: relative;
+  overflow: hidden;
+}
+.group-6 {
+  width: 360px;
+  height: 360px;
+  position: absolute;
+  left: 120px;
+  top: 2141px;
+}
+.group-62 {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  right: 0%;
+  left: 0%;
+  bottom: 0%;
+  top: 0%;
+}
+.rectangle-60 {
+  border-radius: 0px;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  right: 0%;
+  left: 0%;
+  bottom: 0%;
+  top: 0%;
+  overflow: visible;
+  object-fit: cover;
+}
+.drinks {
+  color: var(--pure-white, #ffffff);
+  text-align: center;
+  font-family: "SpaceMono-Bold", sans-serif;
+  font-size: 40px;
+  line-height: var(--static-display-medium-line-height, 52px);
+  font-weight: 700;
+  position: absolute;
+  right: 10%;
+  left: 9.71%;
+  width: 80.29%;
+  bottom: 41.71%;
+  top: 41.43%;
+  height: 16.86%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.my-top-picks-section {
+  background: var(--sage-green, #87a280);
+  width: 1440px;
+  height: 640px;
+  position: absolute;
+  left: 0px;
+  top: 1965px;
+}
+.contact-me-section {
+  background: var(--brown, #b9a590);
+  width: 1440px;
+  height: 427px;
+  position: absolute;
+  left: 0px;
+  top: 2605px;
+}
+.hero {
+  width: 1440px;
+  height: 810px;
+  position: absolute;
+  left: 0px;
+  top: 117px;
+  object-fit: cover;
+}
+.header {
+  background: var(--pure-white, #ffffff);
+  width: 1440px;
+  height: 120px;
+  position: absolute;
+  left: 0px;
+  top: 0px;
+}
+.footer {
+  background: var(--charcoal, #333333);
+  width: 1440px;
+  height: 422px;
+  position: absolute;
+  left: 0px;
+  top: 3032px;
+}
+.explore {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  align-items: flex-start;
+  justify-content: flex-start;
+  width: 205px;
+  position: absolute;
+  left: 633px;
+  top: 3110px;
+}
+.explore2 {
+  color: var(--pure-white, #ffffff);
+  text-align: left;
+  font-family: "SpaceMono-Bold", sans-serif;
+  font-size: 22px;
+  line-height: var(--static-display-medium-line-height, 52px);
+  font-weight: 700;
+  position: relative;
+  align-self: stretch;
+  height: 41px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+.about {
+  flex-shrink: 0;
+  width: 205px;
+  height: 41px;
+  position: relative;
+}
+.about2 {
+  color: var(--pure-white, #ffffff);
+  text-align: left;
+  font-family: "SpaceMono-Regular", sans-serif;
+  font-size: 22px;
+  line-height: var(--static-display-medium-line-height, 52px);
+  font-weight: 400;
+  text-decoration: underline;
+  position: absolute;
+  right: 0%;
+  left: 0%;
+  width: 100%;
+  bottom: 0%;
+  top: 0%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+.food-review {
+  flex-shrink: 0;
+  width: 205px;
+  height: 41px;
+  position: relative;
+}
+.food-review2 {
+  color: var(--pure-white, #ffffff);
+  text-align: left;
+  font-family: "SpaceMono-Regular", sans-serif;
+  font-size: 22px;
+  line-height: var(--static-display-medium-line-height, 52px);
+  font-weight: 400;
+  text-decoration: underline;
+  position: absolute;
+  right: 0%;
+  left: 0%;
+  width: 100%;
+  bottom: 0%;
+  top: 0%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+.my-top-picks {
+  flex-shrink: 0;
+  width: 205px;
+  height: 41px;
+  position: relative;
+}
+.my-top-picks2 {
+  color: var(--pure-white, #ffffff);
+  text-align: left;
+  font-family: "SpaceMono-Regular", sans-serif;
+  font-size: 22px;
+  line-height: var(--static-display-medium-line-height, 52px);
+  font-weight: 400;
+  text-decoration: underline;
+  position: absolute;
+  right: 0%;
+  left: 0%;
+  width: 100%;
+  bottom: 0%;
+  top: 0%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+.contact {
+  flex-shrink: 0;
+  width: 205px;
+  height: 41px;
+  position: relative;
+}
+.contact2 {
+  color: var(--pure-white, #ffffff);
+  text-align: left;
+  font-family: "SpaceMono-Regular", sans-serif;
+  font-size: 22px;
+  line-height: var(--static-display-medium-line-height, 52px);
+  font-weight: 400;
+  text-decoration: underline;
+  position: absolute;
+  right: 0%;
+  left: 0%;
+  width: 100%;
+  bottom: 0%;
+  top: 0%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+.follow-me {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  align-items: flex-start;
+  justify-content: flex-start;
+  width: 167px;
+  position: absolute;
+  left: 865px;
+  top: 3110px;
+}
+.follow-me2 {
+  color: var(--pure-white, #ffffff);
+  text-align: left;
+  font-family: "SpaceMono-Bold", sans-serif;
+  font-size: 22px;
+  line-height: var(--static-display-medium-line-height, 52px);
+  font-weight: 700;
+  position: relative;
+  align-self: stretch;
+  height: 41px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+.instagram {
+  flex-shrink: 0;
+  width: 167px;
+  height: 41px;
+  position: relative;
+}
+.instagram2 {
+  color: var(--pure-white, #ffffff);
+  text-align: left;
+  font-family: "SpaceMono-Regular", sans-serif;
+  font-size: 22px;
+  line-height: var(--static-display-medium-line-height, 52px);
+  font-weight: 400;
+  text-decoration: underline;
+  position: absolute;
+  right: 0%;
+  left: 0%;
+  width: 100%;
+  bottom: 0%;
+  top: 0%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+.linkedin {
+  flex-shrink: 0;
+  width: 167px;
+  height: 41px;
+  position: relative;
+}
+.linkedin2 {
+  color: var(--pure-white, #ffffff);
+  text-align: left;
+  font-family: "SpaceMono-Regular", sans-serif;
+  font-size: 22px;
+  line-height: var(--static-display-medium-line-height, 52px);
+  font-weight: 400;
+  text-decoration: underline;
+  position: absolute;
+  right: 0%;
+  left: 0%;
+  width: 100%;
+  bottom: 0%;
+  top: 0%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+.updates-news-sign-up-with-your-email {
+  color: #ffffff;
+  text-align: left;
+  font-family: "SpaceMono-Bold", sans-serif;
+  font-size: 22px;
+  line-height: 36px;
+  font-weight: 700;
+  position: absolute;
+  left: 1042px;
+  top: 3126px;
+  width: 310px;
+  height: 46px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+.email {
+  width: 310px;
+  height: 66px;
+  position: absolute;
+  left: 1042px;
+  top: 3206px;
+}
+.rectangle-11 {
+  background: var(--pure-white, #ffffff);
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  right: 0%;
+  left: 0%;
+  bottom: 0%;
+  top: 0%;
+}
+.email-address {
+  color: #d8d8d8;
+  text-align: left;
+  font-family: "WorkSans-Regular", sans-serif;
+  font-size: 22px;
+  line-height: 36px;
+  font-weight: 400;
+  position: absolute;
+  right: 0%;
+  left: 4.84%;
+  width: 95.16%;
+  bottom: 15.15%;
+  top: 15.15%;
+  height: 69.7%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+.footer-sign-up {
+  width: 168px;
+  height: 55px;
+  position: absolute;
+  left: 1042px;
+  top: 3288px;
+}
+.rectangle-12 {
+  background: var(--warm-beige, #e6dac6);
+  border-radius: 20px;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  right: 0%;
+  left: 0%;
+  bottom: 0%;
+  top: 0%;
+}
+.sign-up {
+  color: var(--charcoal, #333333);
+  text-align: center;
+  font-family: "SpaceMono-Regular", sans-serif;
+  font-size: 22px;
+  line-height: 36px;
+  font-weight: 400;
+  position: absolute;
+  right: 9.52%;
+  left: 8.93%;
+  width: 81.55%;
+  bottom: 7.27%;
+  top: 9.09%;
+  height: 83.64%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.hi-i-m-joyce-fan {
+  color: var(--soft-grey, #f2f2f2);
+  text-align: left;
+  font-family: "NicoMoji-Regular", sans-serif;
+  font-size: 96px;
+  line-height: 80px;
+  font-weight: 400;
+  position: absolute;
+  left: 120px;
+  top: 183px;
+  width: 632px;
+  height: 184px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+.i-m-on-a-mission-to-taste-explore-and-share-the-best-eats-around-the-world-from-cozy-caf-s-to-hidden-gems-join-me-on-my-food-adventures {
+  color: var(--soft-grey, #f2f2f2);
+  text-align: left;
+  font-family: "WorkSans-Regular", sans-serif;
+  font-size: 24px;
+  line-height: var(--static-headline-large-line-height, 40px);
+  font-weight: 400;
+  position: absolute;
+  left: 120px;
+  top: 493px;
+  width: 627px;
+  height: 160px;
+}
+.food-explorer-photographer-learner {
+  color: var(--soft-grey, #f2f2f2);
+  text-align: left;
+  font-family: "SpaceMono-Regular", sans-serif;
+  font-size: 48px;
+  line-height: var(--static-headline-large-line-height, 40px);
+  font-weight: 400;
+  position: absolute;
+  left: 120px;
+  top: 398px;
+  width: 627px;
+  height: 94px;
+}
+.about-me-button {
+  width: 217px;
+  height: 55px;
+  position: absolute;
+  left: 120px;
+  top: 675px;
+}
+.rectangle-122 {
+  background: var(--brown, #b9a590);
+  border-radius: 20px;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  right: 0%;
+  left: 0%;
+  bottom: 0%;
+  top: 0%;
+}
+.about-me {
+  color: var(--charcoal, #333333);
+  text-align: center;
+  font-family: "WorkSans-Bold", sans-serif;
+  font-size: 22px;
+  line-height: 36px;
+  font-weight: 700;
+  position: absolute;
+  right: 20.28%;
+  left: 20.28%;
+  width: 59.45%;
+  bottom: 7.27%;
+  top: 9.09%;
+  height: 83.64%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.image {
+  width: 526px;
+  height: 725px;
+  position: absolute;
+  left: 0px;
+  top: 1240px;
+  object-fit: cover;
+}
+.image-2 {
+  width: 622px;
+  height: 385px;
+  position: absolute;
+  left: 760px;
+  top: 1580px;
+  object-fit: cover;
+}
+.image-3 {
+  width: 520px;
+  height: 377px;
+  position: absolute;
+  left: 920px;
+  top: 927px;
+  object-fit: cover;
+}
+.featured-reviews {
+  color: var(--charcoal, #333333);
+  text-align: center;
+  font-family: "NicoMoji-Regular", sans-serif;
+  font-size: 64px;
+  line-height: var(--static-display-medium-line-height, 52px);
+  font-weight: 400;
+  position: absolute;
+  left: 457px;
+  top: 1304px;
+  width: 525px;
+  height: 184px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.my-top-picks3 {
+  color: var(--charcoal, #333333);
+  text-align: left;
+  font-family: "NicoMoji-Regular", sans-serif;
+  font-size: 64px;
+  line-height: var(--static-display-medium-line-height, 52px);
+  font-weight: 400;
+  position: absolute;
+  left: 120px;
+  top: 2006px;
+  width: 673px;
+  height: 114px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+.see-more {
+  width: 217px;
+  height: 55px;
+  position: absolute;
+  left: 611px;
+  top: 1460px;
+}
+.rectangle-53 {
+  background: var(--brown, #b9a590);
+  border-radius: 20px;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  right: 0%;
+  left: 0%;
+  bottom: 0%;
+  top: 0%;
+}
+.see-more2 {
+  color: var(--charcoal, #333333);
+  text-align: center;
+  font-family: "WorkSans-Bold", sans-serif;
+  font-size: 22px;
+  line-height: 36px;
+  font-weight: 700;
+  position: absolute;
+  right: 20.28%;
+  left: 20.28%;
+  width: 59.45%;
+  bottom: 7.27%;
+  top: 9.09%;
+  height: 83.64%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.contact-me {
+  width: 217px;
+  height: 55px;
+  position: absolute;
+  left: 611px;
+  top: 2944px;
+}
+.rectangle-56 {
+  background: var(--warm-beige, #e6dac6);
+  border-radius: 20px;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  right: 0%;
+  left: 0%;
+  bottom: 0%;
+  top: 0%;
+}
+.contact-me2 {
+  color: var(--charcoal, #333333);
+  text-align: center;
+  font-family: "WorkSans-Bold", sans-serif;
+  font-size: 22px;
+  line-height: 36px;
+  font-weight: 700;
+  position: absolute;
+  right: 20.28%;
+  left: 20.28%;
+  width: 59.45%;
+  bottom: 7.27%;
+  top: 9.09%;
+  height: 83.64%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.photo {
+  display: flex;
+  flex-direction: row;
+  gap: 67px;
+  align-items: center;
+  justify-content: flex-start;
+  position: absolute;
+  left: 120px;
+  top: 2661px;
+}
+.photo2 {
+  border-radius: 3px;
+  flex-shrink: 0;
+  width: 250px;
+  height: 250px;
+  position: relative;
+  object-fit: cover;
+}
+.photo3 {
+  flex-shrink: 0;
+  width: 250px;
+  height: 250px;
+  position: relative;
+  object-fit: cover;
+}
+.drinks-button {
+  width: 360px;
+  height: 360px;
+  position: absolute;
+  left: 120px;
+  top: 2141px;
+}
+.rectangle-602 {
+  border-radius: 0px;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  right: 0%;
+  left: 0%;
+  bottom: 0%;
+  top: 0%;
+  overflow: visible;
+  object-fit: cover;
+}
+.snacks-button {
+  width: 360px;
+  height: 360px;
+  position: absolute;
+  left: 540px;
+  top: 2141px;
+}
+.rectangle-61 {
+  border-radius: 0px;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  right: 0%;
+  left: 0%;
+  bottom: 0%;
+  top: 0%;
+  overflow: visible;
+  object-fit: cover;
+}
+.snacks {
+  color: var(--pure-white, #ffffff);
+  text-align: center;
+  font-family: "SpaceMono-Bold", sans-serif;
+  font-size: 40px;
+  line-height: var(--static-display-medium-line-height, 52px);
+  font-weight: 700;
+  position: absolute;
+  right: 10%;
+  left: 9.71%;
+  width: 80.29%;
+  bottom: 41.71%;
+  top: 41.43%;
+  height: 16.86%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.food-button {
+  width: 360px;
+  height: 360px;
+  position: absolute;
+  left: 960px;
+  top: 2141px;
+}
+.rectangle-62 {
+  border-radius: 0px;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  right: 0%;
+  left: 0%;
+  bottom: 0%;
+  top: 0%;
+  overflow: visible;
+  object-fit: cover;
+}
+.food {
+  color: var(--pure-white, #ffffff);
+  text-align: center;
+  font-family: "SpaceMono-Bold", sans-serif;
+  font-size: 40px;
+  line-height: var(--static-display-medium-line-height, 52px);
+  font-weight: 700;
+  position: absolute;
+  right: 10%;
+  left: 9.71%;
+  width: 80.29%;
+  bottom: 41.71%;
+  top: 41.43%;
+  height: 16.86%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.navagation-bar {
+  position: absolute;
+  inset: 0;
+}
+.food-review3 {
+  width: 195px;
+  height: 41px;
+  position: absolute;
+  left: 755px;
+  top: 76px;
+}
+.food-review4 {
+  color: #7e7e7e;
+  text-align: center;
+  font-family: "SpaceMono-Regular", sans-serif;
+  font-size: 22px;
+  line-height: var(--static-display-medium-line-height, 52px);
+  font-weight: 400;
+  position: absolute;
+  right: 0%;
+  left: 0%;
+  width: 100%;
+  bottom: 0%;
+  top: 0%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.top-picks {
+  width: 176px;
+  height: 41px;
+  position: absolute;
+  left: 950px;
+  top: 76px;
+}
+.top-picks2 {
+  color: #7e7e7e;
+  text-align: center;
+  font-family: "SpaceMono-Regular", sans-serif;
+  font-size: 22px;
+  line-height: var(--static-display-medium-line-height, 52px);
+  font-weight: 400;
+  position: absolute;
+  right: 0%;
+  left: 0%;
+  width: 100%;
+  bottom: 0%;
+  top: 0%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.about3 {
+  width: 140px;
+  height: 41px;
+  position: absolute;
+  left: 1126px;
+  top: 76px;
+}
+.about4 {
+  color: #7e7e7e;
+  text-align: center;
+  font-family: "SpaceMono-Regular", sans-serif;
+  font-size: 22px;
+  line-height: var(--static-display-medium-line-height, 52px);
+  font-weight: 400;
+  position: absolute;
+  right: 0%;
+  left: 0%;
+  width: 100%;
+  bottom: 0%;
+  top: 0%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.contact3 {
+  width: 136px;
+  height: 41px;
+  position: absolute;
+  left: 1266px;
+  top: 76px;
+}
+.contact4 {
+  color: #7e7e7e;
+  text-align: center;
+  font-family: "SpaceMono-Regular", sans-serif;
+  font-size: 22px;
+  line-height: var(--static-display-medium-line-height, 52px);
+  font-weight: 400;
+  position: absolute;
+  right: 0%;
+  left: 0%;
+  width: 100%;
+  bottom: 0%;
+  top: 0%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.home-button {
+  width: 384px;
+  height: 120px;
+  position: absolute;
+  left: 60px;
+  top: 0px;
+}
+.group-11 {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  right: 0%;
+  left: 0%;
+  bottom: 0%;
+  top: 0%;
+}
+.the-fan-club {
+  color: var(--charcoal, #333333);
+  text-align: center;
+  font-family: "NicoMoji-Regular", sans-serif;
+  font-size: 45px;
+  line-height: var(--static-display-medium-line-height, 52px);
+  font-weight: 400;
+  position: absolute;
+  right: 0%;
+  left: 0%;
+  width: 100%;
+  bottom: 0%;
+  top: 0%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.food-edition {
+  color: var(--charcoal, #333333);
+  text-align: center;
+  font-family: "SpaceMono-Regular", sans-serif;
+  font-size: 22px;
+  line-height: var(--static-display-medium-line-height, 52px);
+  font-weight: 400;
+  position: absolute;
+  right: 6.25%;
+  left: 6.25%;
+  width: 87.5%;
+  bottom: 2.5%;
+  top: 63.33%;
+  height: 34.17%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.white-logo {
+  width: 384px;
+  height: 120px;
+  position: absolute;
+  left: 66px;
+  top: 3080px;
+}
+.the-fan-club2 {
+  color: var(--pure-white, #ffffff);
+  text-align: center;
+  font-family: "NicoMoji-Regular", sans-serif;
+  font-size: 45px;
+  line-height: var(--static-display-medium-line-height, 52px);
+  font-weight: 400;
+  position: absolute;
+  right: 0%;
+  left: 0%;
+  width: 100%;
+  bottom: 0%;
+  top: 0%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.food-edition2 {
+  color: var(--pure-white, #ffffff);
+  text-align: center;
+  font-family: "SpaceMono-Regular", sans-serif;
+  font-size: 22px;
+  line-height: var(--static-display-medium-line-height, 52px);
+  font-weight: 400;
+  position: absolute;
+  right: 6.25%;
+  left: 6.25%;
+  width: 87.5%;
+  bottom: 0%;
+  top: 65.83%;
+  height: 34.17%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+   </style>
   <title>Homepage</title>
 </head>
 <body>
-  <!-- HEADER -->
-  <header>
-      <div class="logo">
-        <h1>The Fan Club</h1>
-        <p>Food Edition</p>
+  <div class="home-page">
+    <div class="group-6">
+      <div class="group-62">
+        <img class="rectangle-60" src="rectangle-600.svg" />
+        <div class="drinks">Drinks</div>
       </div>
-      <nav>
-        <ul>
-          <li><a href="https://joycewyfan.github.io/Fan_Joyce_A3_Food-Review/" class="active">Food Review</a></li>
-          <li><a href="https://joycewyfan.github.io/Fan_Joyce_A3_My-Top-Picks/">Top Picks</a></li>
-          <li><a href="https://joycewyfan.github.io/Fan_Joyce_A3_About-Me/">About</a></li>
-          <li><a href="https://joycewyfan.github.io/Fan_Joyce_A3_Contact-/">Contact</a></li>
-        </ul>
-      </nav>
-    </header>
-
-  <div class="page-container">
-    <!-- HERO SECTION -->
-    <section class="hero-section">
-      <img src="Hero.png" alt="Food photography" class="hero-image">
-      <div class="hero-content">
-        <h1 class="hero-title">Hi I'm Joyce Fan</h1>
-        <p class="hero-subtitle">Food Explorer, Photographer, Learner</p>
-        <p class="hero-description">
-          I'm on a mission to taste, explore, and share the best eats around the world. 
-          From cozy cafés to hidden gems, join me on my food adventures!
-        </p>
-        <button class="btn btn-primary">About Me</button>
+    </div>
+    <div class="my-top-picks-section"></div>
+    <div class="contact-me-section"></div>
+    <img class="hero" src="Hero.png" />
+    <div class="header"></div>
+    <div class="footer"></div>
+    <div class="explore">
+      <div class="explore2">Explore</div>
+      <div class="about">
+        <div class="about2">About</div>
       </div>
-    </section>
-
-    <!-- FEATURED REVIEWS -->
-    <section class="featured-section" id="food-review">
-      <h2 class="section-title">Featured Reviews</h2>
-      
-      <div class="featured-images">
-        <img src="taco jump.png" alt="Taco review" class="featured-image-1">
-        <img src="matcha wu wei.png" alt="Matcha review" class="featured-image-2">
-        <img src="japanese hotpot.png" alt="Hotpot review" class="featured-image-3">
+      <div class="food-review">
+        <div class="food-review2">Food Review</div>
       </div>
-      
-      <br><br>
-      <button class="btn btn-primary">See More</button>
-    </section>
-
-    <!-- TOP PICKS SECTION -->
-    <section class="top-picks-section" id="top-picks">
-      <h2 class="top-picks-title">My Top Picks</h2>
-      
-      <div class="category-grid">
-        <div class="category-card">
-          <img src="drinks button.png" alt="Drinks" class="category-image">
-        </div>
-        
-        <div class="category-card">
-          <img src="snacks button.png" alt="Snacks" class="category-image">
-        </div>
-        
-        <div class="category-card">
-          <img src="food button.png" alt="Food" class="category-image">
-        </div>
+      <div class="my-top-picks">
+        <div class="my-top-picks2">My Top Picks</div>
       </div>
-    </section>
-
-    <!-- CONTACT SECTION -->
-    <section class="contact-section" id="contact">
-      <div class="photo-gallery">
-        <img src="photo.png" alt="Food photo 1" class="gallery-photo">
-        <img src="photo2.png" alt="Food photo 2" class="gallery-photo">
-        <img src="photo3.png" alt="Food photo 3" class="gallery-photo">
-        <img src="photo4.png" alt="Food photo 4" class="gallery-photo">
+      <div class="contact">
+        <div class="contact2">Contact</div>
       </div>
-      
-      <button class="btn btn-secondary">Contact Me</button>
-    </section>
-
-    <!-- FOOTER -->
-    <footer class="footer">
-      <div class="footer-content">
-        <!-- Logo -->
-        <div class="footer-logo">
-          <div class="footer-logo-title">The Fan Club</div>
-          <div class="footer-logo-subtitle">Food Edition</div>
-        </div>
-
-        <!-- Explore Links -->
-        <div class="footer-column">
-          <h3>Explore</h3>
-          <div class="footer-links">
-            <a href="#about" class="footer-link">About</a>
-            <a href="#food-review" class="footer-link">Food Review</a>
-            <a href="#top-picks" class="footer-link">My Top Picks</a>
-            <a href="#contact" class="footer-link">Contact</a>
-          </div>
-        </div>
-
-        <!-- Social Links -->
-        <div class="footer-column">
-          <h3>Follow Me</h3>
-          <div class="footer-links">
-            <a href="#" class="footer-link">Instagram</a>
-            <a href="#" class="footer-link">Linkedin</a>
-          </div>
-        </div>
-
-        <!-- Newsletter -->
-        <div class="footer-column">
-          <form class="newsletter-form">
-            <div class="newsletter-title">Updates? News? Sign up with your email.</div>
-            <input type="email" class="email-input" placeholder="Email Address">
-            <button type="submit" class="btn-signup">Sign Up</button>
-          </form>
-        </div>
+    </div>
+    <div class="follow-me">
+      <div class="follow-me2">Follow Me</div>
+      <div class="instagram">
+        <div class="instagram2">Instagram</div>
       </div>
-    </footer>
+      <div class="linkedin">
+        <div class="linkedin2">Linkedin</div>
+      </div>
+    </div>
+    <div class="updates-news-sign-up-with-your-email">
+      Updates? News? Sign up with your email.
+    </div>
+    <div class="email">
+      <div class="rectangle-11"></div>
+      <div class="email-address">Email Address</div>
+    </div>
+    <div class="footer-sign-up">
+      <div class="rectangle-12"></div>
+      <div class="sign-up">Sign Up</div>
+    </div>
+    <div class="hi-i-m-joyce-fan">Hi I’m Joyce Fan</div>
+    <div
+      class="i-m-on-a-mission-to-taste-explore-and-share-the-best-eats-around-the-world-from-cozy-caf-s-to-hidden-gems-join-me-on-my-food-adventures"
+    >
+      I’m on a mission to taste, explore, and share the best eats around the
+      world. From cozy cafés to hidden gems, join me on my food adventures!
+    </div>
+    <div class="food-explorer-photographer-learner">
+      Food Explorer, Photographer, Learner
+    </div>
+    <div class="about-me-button">
+      <div class="rectangle-122"></div>
+      <div class="about-me">About Me</div>
+    </div>
+    <img class="image" src="taco jump.png" />
+    <img class="image-2" src="japanese hotpot.png" />
+    <img class="image-3" src="matcha wu wei.png" />
+    <div class="featured-reviews">Featured Reviews</div>
+    <div class="my-top-picks3">My Top Picks</div>
+    <div class="see-more">
+      <div class="rectangle-53"></div>
+      <div class="see-more2">See More</div>
+    </div>
+    <div class="contact-me">
+      <div class="rectangle-56"></div>
+      <div class="contact-me2">Contact Me</div>
+    </div>
+    <div class="photo">
+      <img class="photo2" src="photo.png" />
+      <img class="photo3" src="photo2.png" />
+      <img class="photo3" src="photo3.png" />
+      <img class="photo3" src="photo4.png" />
+    </div>
+    <div class="drinks-button">
+      <div class="group-62">
+        <img class="rectangle-602" src="drinks button.png" />
+      </div>
+    </div>
+    <div class="snacks-button">
+      <img class="rectangle-61" src="snacks button.png" />
+      </div>
+    <div class="food-button">
+      <img class="rectangle-62" src="food button.png" />
+    </div>
+    <div class="food-review3">
+      <div class="food-review4">Food Review</div>
+    </div>
+    <div class="top-picks">
+      <div class="top-picks2">Top Picks</div>
+    </div>
+    <div class="about3">
+      <div class="about4">About</div>
+    </div>
+    <div class="contact3">
+      <div class="contact4">Contact</div>
+    </div>
+    <div class="home-button">
+      <div class="group-11">
+        <div class="the-fan-club">The Fan Club</div>
+        <div class="food-edition">Food Edition</div>
+      </div>
+    </div>
+    <div class="white-logo">
+      <div class="the-fan-club2">The Fan Club</div>
+      <div class="food-edition2">Food Edition</div>
+    </div>
   </div>
+  
 </body>
 </html>
