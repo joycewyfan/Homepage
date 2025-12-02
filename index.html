@@ -54,56 +54,56 @@
     /* ============================================
        HEADER
        ============================================ */
-    .header {
-      background: var(--pure-white);
-      width: 1440px;
-      height: 120px;
-      position: absolute;
-      left: 0;
-      top: 0;
-    }
+    header {
+        background: white;
+        padding: 20px 60px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+      }
 
-    .home-button {
-      width: 384px;
-      height: 120px;
-      position: absolute;
-      left: 60px;
-      top: 0;
-    }
+      .logo h1 {
+        font-family: 'Space Mono', monospace;
+        font-size: 45px;
+        font-weight: 700;
+      }
 
-    .logo-title {
-      color: var(--charcoal);
-      text-align: center;
-      font-family: "NicoMoji-Regular", sans-serif;
-      font-size: 45px;
-      line-height: 52px;
-      font-weight: 400;
-      position: absolute;
-      width: 100%;
-      top: 0;
-      height: 100%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
+      .logo p {
+        font-family: 'Space Mono', monospace;
+        font-size: 22px;
+        text-align: center;
+      }
+      
+      .logo a{
+        font-family: 'Space Mono', monospace;
+        font-size: 45px;
+        font-weight: 700;
+        color: #333;
+        text-decoration: none;
+      }
 
-    .logo-subtitle {
-      color: var(--charcoal);
-      text-align: center;
-      font-family: "SpaceMono-Regular", sans-serif;
-      font-size: 22px;
-      line-height: 52px;
-      font-weight: 400;
-      position: absolute;
-      width: 87.5%;
-      left: 6.25%;
-      bottom: 2.5%;
-      top: 63.33%;
-      height: 34.17%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
+      nav ul {
+        display: flex;
+        gap: 30px;
+        list-style: none;
+      }
+
+      nav a {
+        font-family: 'Space Mono', monospace;
+        font-size: 22px;
+        color: #7e7e7e;
+        text-decoration: none;
+        transition: color 0.3s;
+      }
+
+      nav a.active,
+      nav a:hover {
+        color: #333;
+      }
 
     /* Navigation */
     .nav-link {
@@ -601,25 +601,20 @@
 <body>
   <div class="home-page">
     <!-- Header -->
-    <div class="header"></div>
-    
-    <div class="home-button">
-      <div class="logo-title">The Fan Club</div>
-      <div class="logo-subtitle">Food Edition</div>
-    </div>
-
-    <div class="food-review-nav">
-      <div class="nav-link">Food Review</div>
-    </div>
-    <div class="top-picks-nav">
-      <div class="nav-link">Top Picks</div>
-    </div>
-    <div class="about-nav">
-      <div class="nav-link">About</div>
-    </div>
-    <div class="contact-nav">
-      <div class="nav-link">Contact</div>
-    </div>
+  <header>
+      <div class="logo">
+          <h1><a href="https://joycewyfan.github.io/Homepage/" class="active">The Fan Club</a></h1>
+        <p>Food Edition</p>
+      </div>
+      <nav>
+        <ul>
+          <li><a href="https://joycewyfan.github.io/Fan_Joyce_A3_Food-Review/" class="active">Food Review</a></li>
+          <li><a href="https://joycewyfan.github.io/Fan_Joyce_A3_My-Top-Picks/">Top Picks</a></li>
+          <li><a href="https://joycewyfan.github.io/Fan_Joyce_A3_About-Me/">About</a></li>
+          <li><a href="https://joycewyfan.github.io/Fan_Joyce_A3_Contact-/">Contact</a></li>
+        </ul>
+      </nav>
+    </header>
 
     <!-- Hero Section -->
     <img class="hero" src="Hero.png" alt="Hero background">
