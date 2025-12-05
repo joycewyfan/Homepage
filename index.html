@@ -1,11 +1,9 @@
 <!DOCTYPE html>
-<html lang="en-ca">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>The Fan Club - Food Edition</title>
-  
   <style>
     /* ============================================
        CSS RESET
@@ -56,56 +54,56 @@
     /* ============================================
        HEADER
        ============================================ */
-    header {
-        background: white;
-        padding: 20px 60px;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        position: sticky;
-        top: 0;
-        z-index: 100;
-        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
-      }
+    .header {
+      background: var(--pure-white);
+      width: 1440px;
+      height: 120px;
+      position: absolute;
+      left: 0;
+      top: 0;
+    }
 
-      .logo h1 {
-        font-family: 'Space Mono', monospace;
-        font-size: 45px;
-        font-weight: 700;
-      }
+    .home-button {
+      width: 384px;
+      height: 120px;
+      position: absolute;
+      left: 60px;
+      top: 0;
+    }
 
-      .logo p {
-        font-family: 'Space Mono', monospace;
-        font-size: 22px;
-        text-align: center;
-      }
-      
-      .logo a{
-        font-family: 'Space Mono', monospace;
-        font-size: 45px;
-        font-weight: 700;
-        color: #333;
-        text-decoration: none;
-      }
+    .logo-title {
+      color: var(--charcoal);
+      text-align: center;
+      font-family: "NicoMoji-Regular", sans-serif;
+      font-size: 45px;
+      line-height: 52px;
+      font-weight: 400;
+      position: absolute;
+      width: 100%;
+      top: 0;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
 
-      nav ul {
-        display: flex;
-        gap: 30px;
-        list-style: none;
-      }
-
-      nav a {
-        font-family: 'Space Mono', monospace;
-        font-size: 22px;
-        color: #7e7e7e;
-        text-decoration: none;
-        transition: color 0.3s;
-      }
-
-      nav a.active,
-      nav a:hover {
-        color: #333;
-      }
+    .logo-subtitle {
+      color: var(--charcoal);
+      text-align: center;
+      font-family: "SpaceMono-Regular", sans-serif;
+      font-size: 22px;
+      line-height: 52px;
+      font-weight: 400;
+      position: absolute;
+      width: 87.5%;
+      left: 6.25%;
+      bottom: 2.5%;
+      top: 63.33%;
+      height: 34.17%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
 
     /* Navigation */
     .nav-link {
@@ -251,7 +249,7 @@
       color: var(--charcoal);
       text-align: center;
       font-family: "NicoMoji-Regular", sans-serif;
-      font-size: 48px;
+      font-size: 64px;
       line-height: 52px;
       font-weight: 400;
       position: absolute;
@@ -431,7 +429,7 @@
 
     /* ============================================
        FOOTER
-       ============================================ */
+    ============================================ */
     .footer {
       background: var(--charcoal);
       width: 1440px;
@@ -598,28 +596,102 @@
       top: 3288px;
       cursor: pointer;
     }
+    /* ============================================
+       INTERACTIVE STYLES
+       ============================================ */
+    .nav-link:hover {
+      color: var(--charcoal);
+      transform: translateY(-2px);
+      transition: all 0.3s ease;
+    }
+
+    .about-me-button:hover,
+    .see-more-button:hover,
+    .contact-me-button:hover,
+    .footer-signup-button:hover {
+      transform: translateY(-3px);
+      transition: transform 0.3s ease;
+    }
+
+    .about-me-button:hover .btn-bg,
+    .see-more-button:hover .btn-bg-brown {
+      box-shadow: 0 6px 20px rgba(185, 165, 144, 0.4);
+    }
+
+    .contact-me-button:hover .btn-bg-beige,
+    .footer-signup-button:hover .btn-bg-beige {
+      box-shadow: 0 6px 20px rgba(230, 218, 198, 0.4);
+    }
+
+    .pick-card:hover {
+      transform: scale(1.05);
+      transition: transform 0.3s ease;
+      z-index: 10;
+    }
+
+    .pick-card:hover .pick-image {
+      filter: brightness(1.1);
+    }
+
+    .contact-photo {
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .contact-photo:hover {
+      transform: scale(1.05) rotate(2deg);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+    }
+
+    .footer-link:hover,
+    .footer-follow-link:hover {
+      color: var(--warm-beige);
+      transition: color 0.3s ease;
+    }
+
+    .home-button:hover .logo-title {
+      color: var(--brown);
+      transition: color 0.3s ease;
+    }
+
+    /* Smooth scrolling */
+    html {
+      scroll-behavior: smooth;
+    }
+
+    /* Active states */
+    .about-me-button:active,
+    .see-more-button:active,
+    .contact-me-button:active,
+    .footer-signup-button:active {
+      transform: translateY(-1px);
+    }
   </style>
 </head>
 <body>
   <div class="home-page">
     <!-- Header -->
-  <header>
-      <div class="logo">
-          <h1><a href="https://joycewyfan.github.io/Homepage/" class="active">The Fan Club</a></h1>
-        <p>Food Edition</p>
-      </div>
-      <nav>
-        <ul>
-          <li><a href="https://joycewyfan.github.io/Fan_Joyce_A3_Food-Review/" class="active">Food Review</a></li>
-          <li><a href="https://joycewyfan.github.io/Fan_Joyce_A3_My-Top-Picks/">Top Picks</a></li>
-          <li><a href="https://joycewyfan.github.io/Fan_Joyce_A3_About-Me/">About</a></li>
-          <li><a href="https://joycewyfan.github.io/Fan_Joyce_A3_Contact-/">Contact</a></li>
-        </ul>
-      </nav>
-    </header>
+    <div class="header"></div>
+    
+    <div class="home-button">
+      <div class="logo-title">The Fan Club</div>
+      <div class="logo-subtitle">Food Edition</div>
+    </div>
+
+    <a href="#featured" class="food-review-nav">
+      <div class="nav-link">Food Review</div>
+    </a>
+    <a href="#top-picks" class="top-picks-nav">
+      <div class="nav-link">Top Picks</div>
+    </a>
+    <a href="#hero" class="about-nav">
+      <div class="nav-link">About</div>
+    </a>
+    <a href="#contact" class="contact-nav">
+      <div class="nav-link">Contact</div>
+    </a>
 
     <!-- Hero Section -->
-    <img class="hero" src="Hero.png" alt="Hero background">
+    <img class="hero" src="Hero.png" alt="Hero background" id="hero">
     
     <div class="hero-title">Hi I'm Joyce Fan</div>
     <div class="hero-subtitle">Food Explorer, Photographer, Learner</div>
@@ -637,7 +709,8 @@
     <img class="featured-image-1" src="taco jump.png" alt="Taco review">
     <img class="featured-image-2" src="matcha wu wei.png" alt="Matcha review">
     <img class="featured-image-3" src="japanese hotpot.png" alt="Japanese hotpot review">
-    <div class="featured-title">Featured Reviews</div>
+    
+    <div class="featured-title" id="featured">Featured Reviews</div>
     
     <div class="see-more-button">
       <div class="btn-bg-brown"></div>
@@ -645,7 +718,7 @@
     </div>
 
     <!-- Top Picks Section -->
-    <div class="top-picks-section"></div>
+    <div class="top-picks-section" id="top-picks"></div>
     <div class="top-picks-title">My Top Picks</div>
 
     <div class="pick-card drinks-card">
@@ -661,7 +734,7 @@
     </div>
 
     <!-- Contact Section -->
-    <div class="contact-section"></div>
+    <div class="contact-section" id="contact"></div>
     
     <div class="contact-photos">
       <img class="contact-photo" src="photo.png" alt="Food photo 1">
@@ -685,16 +758,16 @@
 
     <div class="footer-explore">
       <div class="footer-section-title">Explore</div>
-      <div class="footer-link">About</div>
-      <div class="footer-link">Food Review</div>
-      <div class="footer-link">My Top Picks</div>
-      <div class="footer-link">Contact</div>
+      <a href="#hero" class="footer-link">About</a>
+      <a href="#featured" class="footer-link">Food Review</a>
+      <a href="#top-picks" class="footer-link">My Top Picks</a>
+      <a href="#contact" class="footer-link">Contact</a>
     </div>
 
     <div class="footer-follow">
       <div class="footer-section-title">Follow Me</div>
-      <div class="footer-follow-link">Instagram</div>
-      <div class="footer-follow-link">Linkedin</div>
+      <a href="https://instagram.com" target="_blank" class="footer-follow-link">Instagram</a>
+      <a href="https://linkedin.com" target="_blank" class="footer-follow-link">Linkedin</a>
     </div>
 
     <div class="footer-signup-title">Updates? News? Sign up with your email.</div>
@@ -703,10 +776,82 @@
       <input class="email-input" type="email" placeholder="Email Address">
     </div>
 
-    <div class="footer-signup-button">
+    <div class="footer-signup-button" onclick="handleSignup()">
       <div class="btn-bg-beige"></div>
       <div class="btn-text">Sign Up</div>
     </div>
   </div>
+<!---Claude.ai to help me with interactions-->
+  <script>
+    // Smooth scroll to top on logo click
+    document.querySelector('.home-button').addEventListener('click', function(e) {
+      e.preventDefault();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+
+    // Email signup handler
+    function handleSignup() {
+      const emailInput = document.querySelector('.email-input');
+      const email = emailInput.value;
+      
+      if (email && email.includes('@')) {
+        alert('Thank you for signing up! We\'ll keep you updated on the latest food adventures.');
+        emailInput.value = '';
+      } else {
+        alert('Please enter a valid email address.');
+      }
+    }
+
+    // Allow Enter key to submit email
+    document.querySelector('.email-input').addEventListener('keypress', function(e) {
+      if (e.key === 'Enter') {
+        handleSignup();
+      }
+    });
+
+    // Add click handlers for buttons
+    document.querySelector('.about-me-button').addEventListener('click', function() {
+      alert('Learn more about Joyce\'s food journey! (This would navigate to an About page)');
+    });
+
+    document.querySelector('.see-more-button').addEventListener('click', function() {
+      alert('See all food reviews! (This would navigate to a Reviews page)');
+    });
+
+    document.querySelector('.contact-me-button').addEventListener('click', function() {
+      alert('Get in touch! (This would open a contact form)');
+    });
+
+    // Add click handlers for pick cards
+    document.querySelectorAll('.pick-card').forEach(card => {
+      card.addEventListener('click', function() {
+        const category = this.querySelector('.pick-label').textContent;
+        alert(`Explore ${category}! (This would filter to ${category} category)`);
+      });
+    });
+
+    // Animate featured images on scroll
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -100px 0px'
+    };
+
+    const observer = new IntersectionObserver(function(entries) {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.opacity = '1';
+          entry.target.style.transform = 'translateY(0)';
+        }
+      });
+    }, observerOptions);
+
+    // Apply fade-in animation to images
+    document.querySelectorAll('.featured-image-1, .featured-image-2, .featured-image-3').forEach(img => {
+      img.style.opacity = '0';
+      img.style.transform = 'translateY(50px)';
+      img.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
+      observer.observe(img);
+    });
+  </script>
 </body>
 </html>
